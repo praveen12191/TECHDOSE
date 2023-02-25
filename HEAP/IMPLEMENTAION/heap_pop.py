@@ -1,4 +1,4 @@
-def heapif(arr,ind):
+def heap(arr,ind):
     left = 2*ind + 1 
     right =2*ind + 2 
     mx = ind 
@@ -9,15 +9,20 @@ def heapif(arr,ind):
     if(ind==mx):
         return 
     arr[ind],arr[mx] = arr[mx],arr[ind]
-    heapif(arr,mx)
+    heap(arr,mx)
+def heapify(arr):
+    l = len(arr)
+    ind = l//2 - 1 
+    for i in range(ind,-1,-1):
+        heap(arr,i)
 def heap_pop(arr):
     arr[0],arr[len(arr)-1] = arr[len(arr)-1],arr[0]
     del arr[-1]
-    heapif(arr,0)
-arr = [1,14,10,8,7,9,3,2,4,6]
-heapif(arr,0)
+    heap(arr,0)
+arr = [1,10,4,2,8,5,20,54]
+heapify(arr)
 print(arr)
-heap_pop(arr)
-print(arr)
-heap_pop(arr)
-print(arr)
+# heap_pop(arr)
+# print(arr)
+# heap_pop(arr)
+# print(arr)
